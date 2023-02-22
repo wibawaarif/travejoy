@@ -1,13 +1,16 @@
 import React from "react";
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 import 'assets/scss/style.scss'
-import IconText from "parts/IconText";
+import LandingPage from "pages/LandingPage";
+import Header from "parts/Header";
 
 function App() {
   return (
-    <div className="App">
-      Hello world! 
-    <IconText></IconText>
+    <div className="App bg-light">
+      <Router>
+        <Route path="/" component={LandingPage}></Route>
+      </Router>
     </div>
   );
 }
