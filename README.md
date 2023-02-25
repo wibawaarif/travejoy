@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<img height="60%" width="100%" src="./progress.png" alt="Progress">
+<img height="60%" width="100%" src="./progress-project.png" alt="Progress">
 
 ## Available Scripts
 
