@@ -63,34 +63,34 @@
       "items": [
         {
           "_id": "asd1293uasdads1",
-          "name": "PSW Antasari",
-          "imageUrl": "/images/image-category-1.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
+          "name": "Tuusula Style",
+          "imageUrl": "/images/image-category-1.png",
+          "country": "Finland",
+          "city": "Tuusula",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Gazebo House",
+          "imageUrl": "/images/image-category-2.png",
+          "country": "United States",
+          "city": "Masillon",
           "isPopular": true
         },
         {
           "_id": "asd1293uasdads1",
-          "name": "Kuretakeso",
-          "imageUrl": "/images/image-category-2.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
+          "name": "Tarfa House",
+          "imageUrl": "/images/image-category-3.png",
+          "country": "Bulgaria",
+          "city": "Plovdiv",
           "isPopular": false
         },
         {
           "_id": "asd1293uasdads1",
-          "name": "Arya Duta",
-          "imageUrl": "/images/image-category-3.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
-          "isPopular": false
-        },
-        {
-          "_id": "asd1293uasdads1",
-          "name": "Grand Dhika",
-          "imageUrl": "/images/image-category-4.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
+          "name": "Freedom Pool House",
+          "imageUrl": "/images/image-category-4.png",
+          "country": "España",
+          "city": "Ibiza",
           "isPopular": false
         }
       ]
@@ -101,35 +101,35 @@
       "items": [
         {
           "_id": "asd1293uasdads1",
-          "name": "PSW Antasari",
-          "imageUrl": "/images/image-category-5.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
-          "isPopular": false
-        },
-        {
-          "_id": "asd1293uasdads1",
-          "name": "Kuretakeso",
-          "imageUrl": "/images/image-category-6.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
-          "isPopular": false
-        },
-        {
-          "_id": "asd1293uasdads1",
-          "name": "Arya Duta",
-          "imageUrl": "/images/image-category-7.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
-          "isPopular": false
-        },
-        {
-          "_id": "asd1293uasdads1",
-          "name": "Grand Dhika",
-          "imageUrl": "/images/image-category-8.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
+          "name": "A&W Style",
+          "imageUrl": "/images/image-category-5.png",
+          "country": "Indonesia",
+          "city": "Padang",
           "isPopular": true
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "The Juniper Room",
+          "imageUrl": "/images/image-category-6.png",
+          "country": "United States",
+          "city": "California",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Tufted Brown Hotel",
+          "imageUrl": "/images/image-category-7.png",
+          "country": "Finland",
+          "city": "Lapland",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Central Cambria Hotel",
+          "imageUrl": "/images/image-category-8.png",
+          "country": "United States",
+          "city": "Cambria",
+          "isPopular": false
         }
       ]
     },
@@ -139,35 +139,35 @@
       "items": [
         {
           "_id": "asd1293uasdads1",
-          "name": "PSW Antasari",
-          "imageUrl": "/images/image-category-9.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
+          "name": "Pendant Theme",
+          "imageUrl": "/images/image-category-9.png",
+          "country": "Indonesia",
+          "city": "Bandung",
           "isPopular": false
         },
         {
           "_id": "asd1293uasdads1",
-          "name": "Kuretakeso",
-          "imageUrl": "/images/image-category-10.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
+          "name": "The White Wooden",
+          "imageUrl": "/images/image-category-10.png",
+          "country": "United Kingdom",
+          "city": "Liverpool",
           "isPopular": false
         },
         {
           "_id": "asd1293uasdads1",
-          "name": "Arya Duta",
-          "imageUrl": "/images/image-category-11.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
+          "name": "Black & White Style",
+          "imageUrl": "/images/image-category-11.png",
+          "country": "United Kingdom",
+          "city": "Boston",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Midcentury Modern",
+          "imageUrl": "/images/image-category-12.png",
+          "country": "Switzerland",
+          "city": "Bern",
           "isPopular": true
-        },
-        {
-          "_id": "asd1293uasdads1",
-          "name": "Grand Dhika",
-          "imageUrl": "/images/image-category-12.jpg",
-          "country": "South Korea",
-          "city": "Seoul Flore",
-          "isPopular": false
         }
       ]
     }
