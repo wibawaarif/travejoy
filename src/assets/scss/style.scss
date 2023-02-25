@@ -4,6 +4,7 @@
 
 // scss-docs-start import-stack
 // Configuration
+@import "colorVariables";
 @import "functions";
 @import "variables";
 @import "variables-dark";
@@ -218,4 +219,8 @@ section {
         }
 
     }
+}
+
+.testimonial-hero, .testimonial-hero img {
+    width: 367px; height: 502px;
 }
