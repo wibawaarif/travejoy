@@ -1,11 +1,13 @@
 import React from 'react'
 import Star from 'elements/Star'
 import Button from 'elements/Button'
+import Fade from 'react-reveal/Fade'
 
 import TestimonyAccent from 'assets/images/testimonial-landingpage-frame.png'
 
 export default function Testimonials({data}) {
   return (
+    <Fade bottom delay={300}>
     <section className='container ps-4 pe-4'>
         <div className="row align-items-center">
             <div className="col-auto" style={{marginRight: 70}}>
@@ -33,5 +35,6 @@ export default function Testimonials({data}) {
             </div>
         </div>
     </section>
+    </Fade>
   )
 }

@@ -1,5 +1,7 @@
 import React from "react";
 
+import Fade from 'react-reveal/Fade'
+
 import ImageHero from "assets/images/img-hero.png";
 import ImageFrameHero from "assets/images/img-hero-frame.png";
 import IconCities from "assets/images/icons/Icon_Cities.svg";
@@ -20,6 +22,7 @@ export default function Hero(props) {
 
 
   return (
+    <Fade bottom>
     <section className="container pt-4">
       <div className="row m-0 align-items-center">
         <div className="col-auto pr-5" style={{ width: 590 }}>
@@ -103,5 +106,6 @@ export default function Hero(props) {
         </div>
       </div>
     </section>
+    </Fade>
   );
 }

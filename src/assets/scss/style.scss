@@ -3,6 +3,8 @@
 
 
 // scss-docs-start import-stack
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&display=swap');
 // Configuration
 @import "colorVariables";
 @import "functions";
@@ -53,7 +55,6 @@
 @import "utilities/api";
 // scss-docs-end import-stack
 
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 
 body {
@@ -150,6 +151,12 @@ section {
 
     .meta-wrapper {
         margin-top: 1rem;
+        &:hover {
+            h5 {
+                text-decoration: underline;
+            }
+        }
+
         h5 {
             font-size: 1.5rem;
             margin-bottom: 2px;
@@ -204,6 +211,13 @@ section {
             display: flex;
             justify-content: flex-end;
             flex-direction: column;
+            
+            &:hover {
+                h5 {
+                    text-decoration: underline;
+                }
+
+            }
         }
 
         &:hover {
@@ -223,4 +237,39 @@ section {
 
 .testimonial-hero, .testimonial-hero img {
     width: 367px; height: 502px;
+}
+
+footer {
+    border-top: 1px solid rgba(41, 61, 77, 0.3);
+    padding-top: 50px;
+
+    .brand-tagline {
+        margin-top: 5px;
+        color: $gray-500;
+        font-weight: 300;
+    }
+
+    .list-group-item {
+        background-color: $light;
+        padding: 0.3125rem 0;
+        border: 0;
+        a, span {
+            color: $gray-500;
+            font-weight: 300;
+        }
+
+        span {
+            &:hover, &:focus {
+                text-decoration: underline;
+                color: $gray-800;
+            }
+        }
+
+    }
+
+    .copyrights {
+        margin: 50px 0;
+        font-weight: 300;
+        color: $gray-500;
+    }
 }
