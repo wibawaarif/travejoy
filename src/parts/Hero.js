@@ -22,9 +22,9 @@ export default function Hero(props) {
 
 
   return (
-    <Fade bottom>
     <section className="container pt-4">
       <div className="row m-0 align-items-center">
+      <Fade bottom>
         <div className="col-auto pr-5" style={{ width: 590 }}>
           <h1 className="fs-2 mt-4 fw-bold line-height-1 mb-3">
             Forget Busy Work, <br />
@@ -87,9 +87,10 @@ export default function Hero(props) {
             </div>
           </div>
         </div>
-
+        </Fade>
         <div className="col-auto ps-5">
           <div className="d-flex justify-content-end align-items-center" style={{width: 600, height: 600 }}>
+          <Fade bottom delay={200}>
             <img
               src={ImageHero}
               alt="Room with couches"
@@ -102,10 +103,11 @@ export default function Hero(props) {
               className="img-fluid position-absolute"
               style={{width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '58%', margin: "0 -45px -45px 0"}}
             />
+             </Fade>
           </div>
         </div>
+
       </div>
     </section>
-    </Fade>
   );
 }
