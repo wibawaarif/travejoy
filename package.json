@@ -9,6 +9,7 @@
     "babel-jest": "^29.4.3",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-date-range": "^1.4.0",
     "react-dom": "^16.13.1",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.1.2",
