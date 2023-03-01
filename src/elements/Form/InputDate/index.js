@@ -13,7 +13,7 @@ import iconCalendar from 'assets/images/icons/Icon_Calender.svg'
 export default function Date(props) {
     const { value, placeholder, name } = props
 
-    const {isShowed, setIsShowed} = useState(false);
+    const [isShowed, setIsShowed] = useState(false);
 
     const datePickerChange = value => {
         const target = {
