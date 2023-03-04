@@ -55,7 +55,6 @@
       "^.+\\.js$": "babel-jest",
       ".+\\.(svg|css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
     }
-
   },
   "devDependencies": {
     "identity-obj-proxy": "^3.0.0"
