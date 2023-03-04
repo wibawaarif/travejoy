@@ -14,6 +14,7 @@ export default function Breadcrumb(props) {
         {props.data.map((item, index) => {
           return (
             <li
+              style={{fontSize: 18}}
               key={`breadcrumb-${index}`}
               className={`breadcrumb-item${
                 index === props.data.length - 1 ? " active" : ""

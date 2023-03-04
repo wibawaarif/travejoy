@@ -60,9 +60,10 @@ export default function Date(props) {
         </span>
       </div>
       <input
+      style={{fontSize: 22, fontWeight: 400}}
         readOnly
         type="text"
-        className="form-control"
+        className="form-control bg-white"
         value={displayDate}
         placeholder={placeholder}
         onClick={() => setIsShowed(!isShowed)}
