@@ -2,9 +2,9 @@ import React from 'react'
 
 import Fade from 'react-reveal/Fade'
 
-import {InputText} from 'elements/Form'
+import InputText from 'elements/Form/InputText';
 
-export default function BookingInformation() {
+export default function BookingInformation(props) {
     const { data, ItemDetails, checkout } = props;
 
   return (
@@ -13,7 +13,7 @@ export default function BookingInformation() {
         <div className="row justify-content-center align-items-center">
           <div className="col-5 border-right py-5" style={{ paddingRight: 80 }}>
             <Fade delay={300}>
-              <div className="card">
+              <div className="card bg-light">
                 <figure className="img-wrapper" style={{ height: 270 }}>
                   <img
                     className="img-cover"
@@ -50,6 +50,7 @@ export default function BookingInformation() {
                 name="firstName"
                 value={data.firstName}
                 onChange={props.onChange}
+                placeholder="Enter your first name..."
               />
 
               <label htmlFor="lastName">Last Name</label>
@@ -58,6 +59,7 @@ export default function BookingInformation() {
                 name="lastName"
                 value={data.lastName}
                 onChange={props.onChange}
+                placeholder="Enter your last name..."
               />
 
               <label htmlFor="email">Email Address</label>
@@ -67,6 +69,7 @@ export default function BookingInformation() {
                 type="email"
                 value={data.email}
                 onChange={props.onChange}
+                placeholder="Enter your valid email address..."
               />
 
               <label htmlFor="phone">Phone Number</label>
@@ -76,6 +79,7 @@ export default function BookingInformation() {
                 type="tel"
                 value={data.phone}
                 onChange={props.onChange}
+                placeholder="Enter your valid phone number..."
               />
             </Fade>
           </div>

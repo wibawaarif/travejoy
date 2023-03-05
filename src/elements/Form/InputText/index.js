@@ -51,6 +51,7 @@ export default function InputText(props) {
           </div>
         )}
         <input
+          style={{backgroundColor: '#DCDCDC'}}
           name={name}
           type={type}
           pattern={pattern}
