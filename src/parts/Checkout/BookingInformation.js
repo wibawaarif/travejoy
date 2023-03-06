@@ -69,6 +69,7 @@ export default function BookingInformation(props) {
                 type="email"
                 value={data.email}
                 onChange={props.onChange}
+                errorResponse="Please enter a valid email address"
                 placeholder="Enter your valid email address..."
               />
 
