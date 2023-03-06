@@ -27,7 +27,7 @@ export default function Button(props) {
           )
         }
       </span>
-    );
+    )
   }
   if (props.type === "link") {
     if (props.isExternal) {
@@ -41,7 +41,7 @@ export default function Button(props) {
         >
           {props.children}
         </a>
-      );
+      )
     } else {
       return (
         <Link
@@ -52,7 +52,7 @@ export default function Button(props) {
         >
           {props.children}
         </Link>
-      );
+      )
     }
   }
 
@@ -64,7 +64,7 @@ export default function Button(props) {
     >
       {props.children}
     </button>
-  );
+  )
 }
 
 Button.propTypes = {

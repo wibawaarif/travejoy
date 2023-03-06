@@ -25,15 +25,15 @@ export default function BookingInformation(props) {
                   <div className="col">
                     <div className="meta-wrapper">
                       <h5>{ItemDetails.name}</h5>
-                      <span className="text-gray-500">
+                      <span className="text-dark">
                         {ItemDetails.city}, {ItemDetails.country}
                       </span>
                     </div>
                   </div>
                   <div className="col-auto">
-                    <span>
+                    <span style={{fontWeight: 500, fontSize: 20}} className='text-secondary'>
                       ${+checkout.duration * ItemDetails.price} USD
-                      <span className="text-gray-500"> per </span>
+                      <span className="text-dark"> per </span>
                       {checkout.duration} {ItemDetails.unit}
                       {+checkout.duration > 1 ? "s" : ""}
                     </span>

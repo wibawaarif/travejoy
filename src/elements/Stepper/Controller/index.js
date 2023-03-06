@@ -10,5 +10,5 @@ export default function Controller(props) {
         </div>
       </section>
     </Fade>
-  );
+  )
 }
