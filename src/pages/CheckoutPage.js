@@ -26,6 +26,7 @@ export default class CheckoutPage extends Component {
       proofPayment: "",
       bankName: "",
       bankHolder: "",
+      errorMsg: "",
     },
   };
 
@@ -34,7 +35,8 @@ export default class CheckoutPage extends Component {
       data: {
         ...this.state.data,
         [event.target.name]: event.target.value,
-      },
+        errorMsg: event.target.errorMsg
+      }, 
     });
   };
 
@@ -105,11 +107,12 @@ export default class CheckoutPage extends Component {
                 <Controller>
                   {data.firstName !== "" &&
                     data.lastName !== "" &&
-                    data.email !== "" &&
-                    data.phone !== "" && (
+                    data.email.length > 1 &&
+                    data.phone !== "" &&
+                    !data.errorMsg && (
                       <Fade>
                         <Button
-                          className="btn mb-3"
+                          className="btn mb-3 col-12 py-3"
                           type="button"
                           isBlock
                           isPrimary
@@ -119,15 +122,15 @@ export default class CheckoutPage extends Component {
                           Continue to Book
                         </Button>
                       </Fade>
-                    )};
+                    )}
                   <Button
-                    className="btn"
+                    className="btn col-12 py-3"
                     type="link"
                     isBlock
                     isLight
                     href={`/properties/${ItemDetails._id}`}
                   >
-                    Cancel
+                    <span style={{color: '#ACACAC'}}>Cancel</span>
                   </Button>
                 </Controller>
               )};

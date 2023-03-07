@@ -36,6 +36,7 @@ export default function InputFile(props) {
           </div>
         )}
         <input
+          style={{backgroundColor: '#DCDCDC', cursor: "pointer"}}
           accept={accept}
           ref={refInputFile}
           name={name}
@@ -45,6 +46,7 @@ export default function InputFile(props) {
           onChange={onChange}
         />
         <input
+          style={{backgroundColor: '#DCDCDC', cursor: "pointer"}}
           onClick={() => refInputFile.current.click()}
           defaultValue={FileName}
           placeholder={placeholder}

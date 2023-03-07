@@ -64,6 +64,7 @@ export default function Payment(props) {
                 name="proofPayment"
                 value={data.proofPayment}
                 onChange={props.onChange}
+                placeholder="Browse a file..."
               />
 
               <label htmlFor="bankName">Asal Bank</label>
@@ -73,6 +74,7 @@ export default function Payment(props) {
                 type="text"
                 value={data.bankName}
                 onChange={props.onChange}
+                placeholder="Please type here..."
               />
 
               <label htmlFor="bankHolder">Nama Pengirim</label>
@@ -82,6 +84,7 @@ export default function Payment(props) {
                 type="text"
                 value={data.bankHolder}
                 onChange={props.onChange}
+                placeholder="Please type here..."
               />
             </Fade>
           </div>

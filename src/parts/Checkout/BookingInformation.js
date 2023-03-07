@@ -11,7 +11,7 @@ export default function BookingInformation(props) {
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
         <div className="row justify-content-center align-items-center">
-          <div className="col-5 border-right py-5" style={{ paddingRight: 80 }}>
+          <div className="col-5 py-5" style={{ paddingRight: 80, borderRight: '1px solid #BCC3D1', borderRadius: 1 }}>
             <Fade delay={300}>
               <div className="card bg-light">
                 <figure className="img-wrapper" style={{ height: 270 }}>
@@ -21,19 +21,19 @@ export default function BookingInformation(props) {
                     alt={ItemDetails.name}
                   />
                 </figure>
-                <div className="row align-items-center">
+                <div style={{marginTop: '1rem'}} className="row align-items-center">
                   <div className="col">
-                    <div className="meta-wrapper">
-                      <h5>{ItemDetails.name}</h5>
-                      <span className="text-dark">
+                    <div className="meta-wrapper m-0">
+                      <h4 style={{fontWeight: 400, fontSize: 24}}>{ItemDetails.name}</h4>
+                      <span style={{fontSize: 20}} className="text-dark fw-light">
                         {ItemDetails.city}, {ItemDetails.country}
                       </span>
                     </div>
                   </div>
                   <div className="col-auto">
-                    <span style={{fontWeight: 500, fontSize: 20}} className='text-secondary'>
+                    <span style={{fontWeight: 500, fontSize: 22}} className='text-secondary'>
                       ${+checkout.duration * ItemDetails.price} USD
-                      <span className="text-dark"> per </span>
+                      <span style={{fontWeight: 300}} className="text-dark"> per </span>
                       {checkout.duration} {ItemDetails.unit}
                       {+checkout.duration > 1 ? "s" : ""}
                     </span>

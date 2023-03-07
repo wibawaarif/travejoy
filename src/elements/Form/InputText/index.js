@@ -23,7 +23,7 @@ export default function InputText(props) {
       if (type === "tel") pattern = "[0-9]*";
 
       const onChange = (event) => {
-        const target = {
+        let target = {
           target: {
             name: name,
             value: event.target.value,
@@ -31,7 +31,13 @@ export default function InputText(props) {
         };
     
         if (type === "email") {
-          if (!pattern.test(event.target.value)) setHasError(errorResponse);
+          if (!pattern.test(event.target.value))
+          {
+
+            setHasError(errorResponse);
+            target.target['errorMsg'] = HasError
+          }
+
           else setHasError(null);
         }
     
