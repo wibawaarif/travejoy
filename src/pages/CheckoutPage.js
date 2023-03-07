@@ -119,7 +119,7 @@ export default class CheckoutPage extends Component {
                           hasShadow
                           onClick={nextStep}
                         >
-                          Continue to Book
+                          <span className="fs-5 fw-medium text-light">Continue to Book</span>
                         </Button>
                       </Fade>
                     )}
@@ -130,7 +130,7 @@ export default class CheckoutPage extends Component {
                     isLight
                     href={`/properties/${ItemDetails._id}`}
                   >
-                    <span style={{color: '#ACACAC'}}>Cancel</span>
+                    <span className='fs-5 fw-medium' style={{color: '#ACACAC'}}>Cancel</span>
                   </Button>
                 </Controller>
               )};
@@ -142,25 +142,25 @@ export default class CheckoutPage extends Component {
                     data.bankHolder !== "" && (
                       <Fade>
                         <Button
-                          className="btn mb-3"
+                          className="btn mb-3 col-12 py-3"
                           type="button"
                           isBlock
                           isPrimary
                           hasShadow
                           onClick={nextStep}
                         >
-                          Continue to Book
+                          <span className="fs-5 fw-medium text-light">Continue to Book</span>
                         </Button>
                       </Fade>
                     )}
                   <Button
-                    className="btn"
+                    className="btn col-12 py-3"
                     type="button"
                     isBlock
                     isLight
                     onClick={prevStep}
                   >
-                    Cancel
+                    <span className='fs-5 fw-medium' style={{color: '#ACACAC'}}>Cancel</span>
                   </Button>
                 </Controller>
               )};
@@ -168,14 +168,14 @@ export default class CheckoutPage extends Component {
             {CurrentStep === "completed" && (
                 <Controller>
                   <Button
-                    className="btn"
+                    className="btn col-12 py-3"
                     type="link"
                     isBlock
                     isPrimary
                     hasShadow
                     href=""
                   >
-                    Back to Home
+                    <span className="fs-5 fw-medium text-light">Back to Home</span>
                   </Button>
                 </Controller>
               )};  

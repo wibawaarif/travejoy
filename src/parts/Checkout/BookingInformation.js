@@ -44,7 +44,7 @@ export default function BookingInformation(props) {
           </div>
           <div className="col-5 py-5" style={{ paddingLeft: 80 }}>
             <Fade delay={600}>
-              <label htmlFor="firstName">First Name</label>
+              <label style={{fontSize: 22}} htmlFor="firstName">First Name</label>
               <InputText
                 id="firstName"
                 name="firstName"
@@ -53,7 +53,7 @@ export default function BookingInformation(props) {
                 placeholder="Enter your first name..."
               />
 
-              <label htmlFor="lastName">Last Name</label>
+              <label style={{fontSize: 22}} htmlFor="lastName">Last Name</label>
               <InputText
                 id="lastName"
                 name="lastName"
@@ -62,7 +62,7 @@ export default function BookingInformation(props) {
                 placeholder="Enter your last name..."
               />
 
-              <label htmlFor="email">Email Address</label>
+              <label style={{fontSize: 22}} htmlFor="email">Email Address</label>
               <InputText
                 id="email"
                 name="email"
@@ -73,7 +73,7 @@ export default function BookingInformation(props) {
                 placeholder="Enter your valid email address..."
               />
 
-              <label htmlFor="phone">Phone Number</label>
+              <label style={{fontSize: 22}} htmlFor="phone">Phone Number</label>
               <InputText
                 id="phone"
                 name="phone"

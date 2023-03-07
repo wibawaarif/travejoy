@@ -22,18 +22,18 @@ export default function Payment(props) {
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
         <div className="row justify-content-center align-items-center">
-          <div className="col-5 border-right py-5" style={{ paddingRight: 80 }}>
+          <div className="col-5 py-5" style={{ paddingRight: 80, borderRight: '1px solid #BCC3D1', borderRadius: 1 }}>
             <Fade delay={300}>
-              <p className="mb-4">Transfer Pembayaran:</p>
-              <p>Tax: {tax}%</p>
-              <p>Sub total: ${subTotal} USD</p>
-              <p>Total: ${grandTotal} USD</p>
+              <p style={{fontSize: 22}} className="mb-4">Transfer Pembayaran:</p>
+              <p style={{fontSize: 22}}>Tax: <span style={{fontSize: 22, fontWeight: 500}}>{tax}%</span></p>
+              <p style={{fontSize: 22}}>Sub total: <span style={{fontSize: 22, fontWeight: 500}}>${subTotal} USD</span></p>
+              <p style={{fontSize: 22}}>Total: <span style={{fontSize: 22, fontWeight: 500}}>${grandTotal} USD</span></p>
               <div className="row mt-4">
                 <div className="col-3 text-right">
                   <img src={logoBca} alt="bank central asia" width="60" />
                 </div>
                 <div className="col">
-                  <dl>
+                  <dl style={{fontSize: 22}}>
                     <dd>Bank Central Asia</dd>
                     <dd>2208 1999</dd>
                     <dd>Arif Wibawa</dd>
@@ -46,7 +46,7 @@ export default function Payment(props) {
                   <img src={logoMandiri} alt="mandiri" width="60" />
                 </div>
                 <div className="col">
-                  <dl>
+                  <dl style={{fontSize: 22}}>
                     <dd>Bank Mandiri</dd>
                     <dd>1999 20692 9340</dd>
                     <dd>Arif Wibawa</dd>
@@ -57,7 +57,7 @@ export default function Payment(props) {
           </div>
           <div className="col-5 py-5" style={{ paddingLeft: 80 }}>
             <Fade delay={600}>
-              <label htmlFor="proofPayment">Upload Bukti Transfer</label>
+              <label style={{fontSize: 22}} htmlFor="proofPayment">Upload Bukti Transfer</label>
               <InputFile
                 accept="image/*"
                 id="proofPayment"
@@ -67,7 +67,7 @@ export default function Payment(props) {
                 placeholder="Browse a file..."
               />
 
-              <label htmlFor="bankName">Asal Bank</label>
+              <label style={{fontSize: 22}} htmlFor="bankName">Asal Bank</label>
               <InputText
                 id="bankName"
                 name="bankName"
@@ -77,7 +77,7 @@ export default function Payment(props) {
                 placeholder="Please type here..."
               />
 
-              <label htmlFor="bankHolder">Nama Pengirim</label>
+              <label style={{fontSize: 22}} htmlFor="bankHolder">Nama Pengirim</label>
               <InputText
                 id="bankHolder"
                 name="bankHolder"
