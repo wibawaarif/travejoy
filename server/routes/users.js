@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
+const Category = require('../models/Category')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.post('/test', function(req, res, next) {
+  const { name } = req.body
+
+  const saveCategory = new Category({
+    name,
+  })
+
+  saveCategory.save();
+
+  return res.send(saveCategory);
 });
 
 module.exports = router;
