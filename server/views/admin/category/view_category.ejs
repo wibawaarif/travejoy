@@ -3,7 +3,6 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <%- include('../../partials/sidebar.ejs') %>
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -42,4 +41,18 @@
     </a>
 
     <%- include('../../partials/logout.ejs') %>
+    <%- include('./add_modal.ejs') %>
+    <%- include('./edit_modal.ejs') %>
     <%- include('../../partials/js.ejs') %>
+
+    <script>
+        $('#dataTable').on('click', '.button-update', function (){
+            let id = $(this).data('id');
+            let name = $(this).data('name');
+            $('#edit-modal').modal('show');
+            $('.id').val(id);
+            $('.name').val(name);
+
+        })
+
+    </script>
