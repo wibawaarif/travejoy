@@ -17,6 +17,12 @@ module.exports = {
         await Category.create({name});
         res.redirect('/admin/category')
     },
+    deleteCategory: async(req, res) => {
+        const { id } = req.params;
+        const category = await Category.findById(id)
+        category.deleteOne({_id: id})
+        res.redirect('/admin/category')
+    },
     editCategory: async(req, res) => {
         const { name, id } = req.body;
         const category = await Category.findById(id)
