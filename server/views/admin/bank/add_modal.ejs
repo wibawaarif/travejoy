@@ -1,0 +1,37 @@
+
+  <!-- Modal -->
+  <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-2" id="exampleModalLabel">Add Bank</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/admin/bank" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+                <div class="mb-3">
+                  <label for="bank" class="form-label">Bank Name</label>
+                  <input type="text" class="form-control" name="bank" id="bank" placeholder="Enter bank..." required>
+                </div>
+                <div class="mb-3">
+                    <label for="account" class="form-label">Account Number</label>
+                    <input type="text" class="form-control" name="account" id="account" placeholder="Enter account number..." required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name..." required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" class="form-control" name="image" id="image" required>
+                  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

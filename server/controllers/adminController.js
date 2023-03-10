@@ -1,4 +1,5 @@
 const Category = require('../models/Category');
+const Bank = require('../models/Bank')
 
 module.exports = {
     viewDashboard: (req, res) => {
@@ -20,9 +21,20 @@ module.exports = {
 
     },
     viewBank: (req, res) => {
-        res.render('admin/bank/view_bank', {
-            title: "Travejoy | Bank"
-        });
+        try {
+            const alertMessage = req.flash('alertMessage')
+            const alertStatus = req.flash('alertStatus')
+            const alert = {message: alertMessage, status: alertStatus}
+            res.render('admin/bank/view_bank', {
+                title: "Travejoy | Bank",
+                alert
+            });
+        } catch (error) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect('/admin/bank')
+        }
+
     },
     addCategory: async(req, res) => {
         try{
@@ -35,6 +47,20 @@ module.exports = {
             req.flash('alertMessage', `${error.message}`)
             req.flash('alertStatus', 'danger')
             res.redirect('/admin/category')
+        }
+    },
+    addBank: async(req, res) => {
+        try{
+        const { bank, account, name } = req.body;
+        await Bank.create({name, account, bank, imageUrl: `images/${req.file.filename}`});
+
+            req.flash('alertMessage', 'Success Add Bank')
+            req.flash('alertStatus', 'success')
+            res.redirect('/admin/bank')
+        } catch (error) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect('/admin/bank')
         }
     },
     deleteCategory: async(req, res) => {
