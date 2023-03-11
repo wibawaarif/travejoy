@@ -2,6 +2,7 @@ const Category = require('../models/Category');
 const Bank = require('../models/Bank')
 const Item = require('../models/Item')
 const Image = require('../models/Image')
+const Feature = require('../models/Feature')
 const fs = require('fs-extra')
 const path = require('path')
 
@@ -318,14 +319,15 @@ module.exports = {
 
     },
     viewDetailItem: (req, res) => {
+        const {itemId} = req.params;
         try {
             const alertMessage = req.flash('alertMessage')
             const alertStatus = req.flash('alertStatus')
             const alert = {message: alertMessage, status: alertStatus}
-            const {itemId} = req.params;
             res.render('admin/item/item_detail/view_item_detail', {
                 title: "Travejoy | Item Detail",
                 alert,
+                itemId
             });
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
@@ -333,7 +335,28 @@ module.exports = {
             res.redirect(`/admin/item/show-item-detail/${itemId}`)
         }
     },
+    addFeature: async(req, res) => {
+        const { quantity, itemId, name} = req.body;
+        try{
+        if (!req.file) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect(`/admin/item/show-item-detail/${itemId}`)
+        }
+        const feature = await Feature.create({name, qty: quantity, itemId, imageUrl: `images/${req.file.filename}`});
 
+        const item = await Item.findOne({_id: itemId})
+        item.featureId.push({_id: feature._id})
+        await item.save()
+            req.flash('alertMessage', 'Success Add Feature')
+            req.flash('alertStatus', 'success')
+            res.redirect(`/admin/item/show-item-detail/${itemId}`)
+        } catch (error) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect(`/admin/item/show-item-detail/${itemId}`)
+        }
+    },
     viewBooking: (req, res) => {
         res.render('admin/booking/view_booking', {
             title: "Travejoy | Booking"
