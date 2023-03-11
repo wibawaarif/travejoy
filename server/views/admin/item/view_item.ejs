@@ -79,5 +79,8 @@
     <%- include('../../partials/logout.ejs') %>
     <%- include('../../partials/js.ejs') %>
     <script>
+      $(document).ready(function() {
+        $('#dataTableActivity').DataTable();
+      })
         CKEDITOR.replace( 'about' );
 </script>

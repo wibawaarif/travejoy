@@ -186,8 +186,8 @@ module.exports = {
             const item = await Item.create(newItem)
             category.itemId.push({_id: item._id})
             await category.save()
+            console.log(req.files)
             for(let i=0; i < req.files.length; i++) {
-                console.log(i, req.files[i])
                 const saveImage = await Image.create({imageUrl: `images/${req.files[i].filename}`});
                 item.imageId.push({_id: saveImage._id});
                 await item.save();
@@ -317,6 +317,23 @@ module.exports = {
         }
 
     },
+    viewDetailItem: (req, res) => {
+        try {
+            const alertMessage = req.flash('alertMessage')
+            const alertStatus = req.flash('alertStatus')
+            const alert = {message: alertMessage, status: alertStatus}
+            const {itemId} = req.params;
+            res.render('admin/item/item_detail/view_item_detail', {
+                title: "Travejoy | Item Detail",
+                alert,
+            });
+        } catch (error) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect(`/admin/item/show-item-detail/${itemId}`)
+        }
+    },
+
     viewBooking: (req, res) => {
         res.render('admin/booking/view_booking', {
             title: "Travejoy | Booking"
