@@ -318,16 +318,18 @@ module.exports = {
         }
 
     },
-    viewDetailItem: (req, res) => {
+    viewDetailItem: async(req, res) => {
         const {itemId} = req.params;
         try {
             const alertMessage = req.flash('alertMessage')
             const alertStatus = req.flash('alertStatus')
             const alert = {message: alertMessage, status: alertStatus}
+            const feature = await Feature.find({itemId})
             res.render('admin/item/item_detail/view_item_detail', {
                 title: "Travejoy | Item Detail",
                 alert,
-                itemId
+                itemId,
+                feature
             });
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
