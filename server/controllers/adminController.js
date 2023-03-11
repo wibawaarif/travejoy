@@ -187,6 +187,7 @@ module.exports = {
             category.itemId.push({_id: item._id})
             await category.save()
             for(let i=0; i < req.files.length; i++) {
+                console.log(i, req.files[i])
                 const saveImage = await Image.create({imageUrl: `images/${req.files[i].filename}`});
                 item.imageId.push({_id: saveImage._id});
                 await item.save();
@@ -284,6 +285,31 @@ module.exports = {
                 req.flash('alertStatus', 'success')
                 res.redirect('/admin/item')
             }
+        } catch (error) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect('/admin/item')
+        }
+
+    },
+    deleteItem: async(req, res) => {
+        try {
+            const {id} = req.params;
+            const item = await Item.findOne({_id: id}).populate('imageId')
+            for(let i=0; i < item.imageId.length; i++) {
+                Image.findOne({_id: item.imageId[i]._id}).then((image) => {
+                    fs.unlink(path.join(`public/${image.imageUrl}`));
+                    image.remove();
+                }).catch((error) => {
+                    req.flash('alertMessage', `${error.message}`)
+                    req.flash('alertStatus', 'danger')
+                    res.redirect('/admin/item')
+                })
+            }
+            item.deleteOne({_id: id})
+            req.flash('alertMessage', 'Success Delete item')
+            req.flash('alertStatus', 'success')
+            res.redirect('/admin/item')
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
             req.flash('alertStatus', 'danger')
