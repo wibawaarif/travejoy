@@ -14,13 +14,26 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                  <%- include('../../partials/messages.ejs') %>
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Item</h1>
 
                     <!-- End Heading-->
 
-                    <%- include('./table_item.ejs') %>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button type="button" href="#show-item" class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#show-item"  role="tab" aria-controls="show-item" aria-selected="true">Show Item</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button type="button" href="#add-item" class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#add-item"  role="tab" aria-controls="add-item" aria-selected="false">Add Item</button>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <%- include('show_table_item.ejs') %>
+                        <%- include('add_item.ejs') %>
+                      </div>
+                      
 
                 </div>
                 <!-- /.container-fluid -->
@@ -43,3 +56,6 @@
 
     <%- include('../../partials/logout.ejs') %>
     <%- include('../../partials/js.ejs') %>
+    <script>
+        CKEDITOR.replace( 'about' );
+</script>
