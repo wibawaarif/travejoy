@@ -29,8 +29,8 @@
                         </li>
                       </ul>
                       <div class="tab-content" id="myTabContent">
-                        <%- include('show_feature.ejs') %>
                         <%- include('show_activity.ejs') %>
+                        <%- include('show_feature.ejs') %>
                       </div>
 
 
@@ -53,14 +53,29 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <%- include('show_modal_feature.ejs') %>
+    <%- include('show_modal_activity.ejs') %>
     <%- include('../../../partials/logout.ejs') %>
     <%- include('../../../partials/js.ejs') %>
     <script>
+      $(document).ready(function () {
+        $('#dataTableActivity').DataTable();
+      })
+      CKEDITOR.replace('about')
+
+        $('#dataTableActivity').on('click', '.button-edit', function (){
+            let id = $(this).data('id');
+            let name = $(this).data('name');
+            let type = $(this).data('type');
+            $('#edit-modal-activity').modal('show');
+            $('.id').val(id);
+            $('.name').val(name);
+            $('.type').val(type);
+        })
+
         $('#dataTable').on('click', '.button-update', function (){
             let id = $(this).data('id');
             let name = $(this).data('name');
             let quantity = $(this).data('quantity');
-            console.log(id, name, quantity)
             $('#edit-modal-feature').modal('show');
             $('.id').val(id);
             $('.name').val(name);
