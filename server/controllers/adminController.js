@@ -5,6 +5,8 @@ const Image = require('../models/Image')
 const Feature = require('../models/Feature')
 const Activity = require('../models/Activity')
 const User = require('../models/User')
+
+
 const bcrypt = require('bcryptjs')
 const fs = require('fs-extra')
 const path = require('path')
@@ -15,7 +17,12 @@ module.exports = {
             const alertMessage = req.flash('alertMessage')
             const alertStatus = req.flash('alertStatus')
             const alert = {message: alertMessage, status: alertStatus}
-            res.render('index', { alert, title: "Travejoy | Login" });
+            if(req.session.user == null || req.session.user == undefined) {
+                res.render('index', { alert, title: "Travejoy | Login" });
+            } else {
+                res.redirect('/admin/dashboard')
+            }
+
         } catch (error) {
             res.redirect('/admin/signin')
         }
@@ -37,6 +44,11 @@ module.exports = {
                 req.flash('alertMessage', 'Invalid credentials')
                 req.flash('alertStatus', 'danger')
                 res.redirect('/admin/signin')
+            }
+
+            req.session.user = {
+                id: user.id,
+                username: user.username
             }
 
             res.redirect('/admin/dashboard')
