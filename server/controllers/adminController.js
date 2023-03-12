@@ -4,10 +4,46 @@ const Item = require('../models/Item')
 const Image = require('../models/Image')
 const Feature = require('../models/Feature')
 const Activity = require('../models/Activity')
+const User = require('../models/User')
+const bcrypt = require('bcryptjs')
 const fs = require('fs-extra')
 const path = require('path')
 
 module.exports = {
+    viewSignin: async (req, res) => {
+        try {
+            const alertMessage = req.flash('alertMessage')
+            const alertStatus = req.flash('alertStatus')
+            const alert = {message: alertMessage, status: alertStatus}
+            res.render('index', { alert, title: "Travejoy | Login" });
+        } catch (error) {
+            res.redirect('/admin/signin')
+        }
+    },
+    actionSignin: async (req, res) => {
+        try {
+            const { username, password } = req.body;
+
+            const user = await User.findOne({username});
+            if (!user) {
+                req.flash('alertMessage', 'User not found')
+                req.flash('alertStatus', 'danger')
+                res.redirect('/admin/signin')
+            }
+
+            const isPasswordMatch = await bcrypt.compare(password, user.password)
+
+            if(!isPasswordMatch) {
+                req.flash('alertMessage', 'Invalid credentials')
+                req.flash('alertStatus', 'danger')
+                res.redirect('/admin/signin')
+            }
+
+            res.redirect('/admin/dashboard')
+        } catch (error) {
+            res.redirect('/admin/signin')
+        }
+    },
     viewDashboard: (req, res) => {
         res.render('admin/dashboard/view_dashboard', {
             title: "Travejoy | Dashboard"

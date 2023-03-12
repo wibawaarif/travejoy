@@ -3,7 +3,8 @@ const adminController = require('../controllers/adminController')
 const { upload, uploadMultiple } = require('../middlewares/multer')
 
 router.get('/dashboard', adminController.viewDashboard);
-
+router.get('/signin', adminController.viewSignin);
+router.post('/signin', adminController.actionSignin);
 
 // endpoint category
 router.get('/category', adminController.viewCategory);
