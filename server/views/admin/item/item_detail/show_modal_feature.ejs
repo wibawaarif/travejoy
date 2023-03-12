@@ -1,0 +1,38 @@
+
+  <!-- Modal -->
+  <div class="modal fade" id="edit-modal-feature" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Feature</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <form action="/admin/item/edit/feature?_method=PUT" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control name" name="name" id="name" placeholder="Enter name..." required>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control quantity" name="quantity" id="quantity" placeholder="Enter quantity..." required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" class="form-control image" name="image" id="image">
+                    <span>Choose image for edit image</span>
+                  </div>
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" class="id" name="id">
+            <input hidden type="text" value="<%= itemId %>" name="itemId">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" >Edit</button>
+
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+  

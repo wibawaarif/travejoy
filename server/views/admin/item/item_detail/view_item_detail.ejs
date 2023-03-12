@@ -52,9 +52,18 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
+    <%- include('show_modal_feature.ejs') %>
     <%- include('../../../partials/logout.ejs') %>
     <%- include('../../../partials/js.ejs') %>
     <script>
-        CKEDITOR.replace( 'about' );
+        $('#dataTable').on('click', '.button-update', function (){
+            let id = $(this).data('id');
+            let name = $(this).data('name');
+            let quantity = $(this).data('quantity');
+            console.log(id, name, quantity)
+            $('#edit-modal-feature').modal('show');
+            $('.id').val(id);
+            $('.name').val(name);
+            $('.quantity').val(quantity);
+        })
 </script>

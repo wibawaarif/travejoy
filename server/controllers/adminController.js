@@ -359,6 +359,65 @@ module.exports = {
             res.redirect(`/admin/item/show-item-detail/${itemId}`)
         }
     },
+    editFeature: async(req, res) => {
+        const { id, name, quantity, itemId } = req.body;
+        console.log(req.body)
+
+        try {
+            const feature = await Feature.findById(id)
+            if (req.file == undefined) {
+                feature.name = name,
+                feature.qty = quantity,
+                await feature.save();
+                req.flash('alertMessage', 'Success Update Feature')
+                req.flash('alertStatus', 'success')
+                res.redirect(`/admin/item/show-item-detail/${itemId}`)
+            } else {
+                // delete file
+                await fs.unlink(path.join(`public/${feature.imageUrl}`))
+                feature.name = name,
+                feature.qty = quantity,
+                feature.imageUrl = `images/${req.file.filename}`
+                await feature.save();
+                req.flash('alertMessage', 'Success Update Feature')
+                req.flash('alertStatus', 'success')
+                res.redirect(`/admin/item/show-item-detail/${itemId}`)
+            }
+        } catch (error) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect(`/admin/item/show-item-detail/${itemId}`)
+        }
+
+    },
+    deleteFeature: async(req, res) => {
+        const { id, itemId } = req.params;
+        try {
+            const feature = await Feature.findById(id)
+
+            const item = await Item.findOne({_id: itemId})
+                .populate('featureId')
+
+            for(let i=0; i < item.featureId.length; i++) {
+                if (item.featureId[i]._id.toString() === feature._id.toString()) {
+                    item.featureId.pull({_id: feature._id})
+                    await item.save();
+                }
+            }
+
+
+            await fs.unlink(path.join(`public/${feature.imageUrl}`))
+            feature.deleteOne({_id: id})
+            req.flash('alertMessage', 'Success Delete Feature')
+            req.flash('alertStatus', 'success')
+            res.redirect(`/admin/item/show-item-detail/${itemId}`)
+        } catch (error) {
+            req.flash('alertMessage', `${error.message}`)
+            req.flash('alertStatus', 'danger')
+            res.redirect(`/admin/item/show-item-detail/${itemId}`)
+        }
+
+    },
     viewBooking: (req, res) => {
         res.render('admin/booking/view_booking', {
             title: "Travejoy | Booking"
