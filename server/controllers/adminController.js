@@ -56,10 +56,20 @@ module.exports = {
             res.redirect('/admin/signin')
         }
     },
+    actionLogout: (req,res) => {
+        req.session.destroy();
+        res.redirect('/admin/signin')
+    },
     viewDashboard: (req, res) => {
-        res.render('admin/dashboard/view_dashboard', {
-            title: "Travejoy | Dashboard"
-        });
+        try {
+            res.render('admin/dashboard/view_dashboard', {
+                title: "Travejoy | Dashboard",
+                user: req.session.user
+            });
+        } catch (error) {
+            
+        }
+ 
     },
     viewCategory: async(req, res) => {
 
@@ -68,7 +78,7 @@ module.exports = {
             const alertMessage = req.flash('alertMessage')
             const alertStatus = req.flash('alertStatus')
             const alert = {message: alertMessage, status: alertStatus}
-            res.render('admin/category/view_category', { category, alert, title: "Travejoy | Category" });
+            res.render('admin/category/view_category', { category, alert, title: "Travejoy | Category", user: req.session.user });
         } catch (error) {
             res.redirect('/admin/category')
         }
@@ -83,7 +93,8 @@ module.exports = {
             res.render('admin/bank/view_bank', {
                 title: "Travejoy | Bank",
                 alert,
-                bank
+                bank,
+                user: req.session.user
                 
             });
         } catch (error) {
@@ -212,7 +223,8 @@ module.exports = {
                 alert,
                 category,
                 item,
-                action: 'view'
+                action: 'view',
+                user: req.session.user
             });
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
@@ -380,7 +392,8 @@ module.exports = {
                 alert,
                 itemId,
                 feature,
-                activity
+                activity,
+                user: req.session.user
             });
         } catch (error) {
             req.flash('alertMessage', `${error.message}`)
@@ -550,7 +563,8 @@ module.exports = {
     },
     viewBooking: (req, res) => {
         res.render('admin/booking/view_booking', {
-            title: "Travejoy | Booking"
+            title: "Travejoy | Booking",
+            user: req.session.user
         });
     }
 }

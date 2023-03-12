@@ -7,6 +7,7 @@ router.get('/signin', adminController.viewSignin);
 router.post('/signin', adminController.actionSignin);
 router.use(auth);
 router.get('/dashboard', adminController.viewDashboard);
+router.get('/logout', adminController.actionLogout);
 
 // endpoint category
 router.get('/category', adminController.viewCategory);
