@@ -62,14 +62,20 @@ module.exports = {
         req.session.destroy();
         res.redirect('/admin/signin')
     },
-    viewDashboard: (req, res) => {
+    viewDashboard: async (req, res) => {
         try {
+            const member = await Member.find({});
+            const booking = await Booking.find({});
+            const item = await Item.find({});
             res.render('admin/dashboard/view_dashboard', {
                 title: "Travejoy | Dashboard",
-                user: req.session.user
+                user: req.session.user,
+                member,
+                booking,
+                item
             });
         } catch (error) {
-            
+            res.redirect('/admin/dashboard')
         }
  
     },
