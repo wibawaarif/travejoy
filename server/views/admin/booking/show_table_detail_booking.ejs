@@ -13,12 +13,23 @@
                 alt="image"
                 style="width: 100%; display: block"
               />
-              <form class="ms-4" action="/admin/booking" method="POST">
-                <div class="mt-2">
-                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Confirm</button>
-                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Reject</button>
+              <% if(booking.payments.status == 'Process') {%>
+
+              
+              <div class="row">
+                <div style="max-width: fit-content;" class="col pe-0 me-2">
+                    <form class="ms-4" action="/admin/booking/<%= booking.id %>/confirmation?_method=PUT" method="POST">
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Confirm</button>
+                </form>
                 </div>
-            </form>
+                <div style="max-width: fit-content;" class="col ps-0">
+                    <form action="/admin/booking/<%= booking.id %>/rejection?_method=PUT" method="POST">
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Reject</button>
+                </form>
+                </div>
+ 
+              </div>
+              <% } %>
             </div>
             <div class="col-md-8">
                 <div class="table-responsive">
