@@ -1,6 +1,7 @@
 const Item = require('../models/Item')
 const Treasure = require('../models/Activity')
 const Traveller = require('../models/Booking')
+const Category = require('../models/Category')
 
 module.exports = {
     landingPage: async(req, res) => {
@@ -12,7 +13,15 @@ module.exports = {
                     path: 'imageId',
                     select: '_id imageUrl'
                 })
-
+            const category = await Category.find({})
+                .select('_id name')
+                .limit(3)
+                .populate({
+                    path: 'itemId',
+                    select: '_id title country city isPopular imageId',
+                    perDocumentLimit: 4,
+                    populate: {path: 'imageId', select: '_id imageUrl', perDocumentLimit: 1}
+                })
             const traveller = await Traveller.find();
             const treasure = await Treasure.find();
             const city = await Item.find();
@@ -24,7 +33,8 @@ module.exports = {
                     treasures: treasure.length,
                     cities: city.length,
                 },
-                mostPicked
+                mostPicked,
+                category
             })
         } catch (error) {
             
