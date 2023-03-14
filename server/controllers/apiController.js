@@ -3,6 +3,8 @@ const Treasure = require('../models/Activity')
 const Traveller = require('../models/Booking')
 const Category = require('../models/Category')
 const Bank = require('../models/Bank')
+const Member = require('../models/Member')
+const Booking = require('../models/Booking')
 
 module.exports = {
     landingPage: async(req, res) => {
@@ -103,7 +105,89 @@ module.exports = {
                 testimonial
             })
         } catch (error) {
-            
+            res.status(500).json({message: "Internal server error"})
         }
+    },
+
+    bookingPage: async (req, res) => {
+        const {
+            idItem,
+            duration,
+            // price,
+            startDate,
+            endDate,
+            firstName,
+            lastName,
+            emailAddress,
+            phoneNumber,
+            accountHolder,
+            bankOrigin,
+          } = req.body
+          
+          if(!req.file) {
+            return res.status(404).json({message: "Image not found"})
+          }
+
+          if(
+            idItem === undefined ||
+            duration === undefined ||
+            // price === undefined ||
+            startDate === undefined ||
+            endDate === undefined ||
+            firstName === undefined ||
+            lastName === undefined ||
+            emailAddress === undefined ||
+            phoneNumber === undefined ||
+            accountHolder === undefined ||
+            bankOrigin === undefined
+          ) {
+            return res.status(404).json({message: "Field cannot be empty"});
+          }
+
+          const item = await Item.findOne({_id: idItem});
+
+          if(!item) {
+            return res.status(404).json({message: "Item not found"});
+          }
+
+          item.sumBooking += 1;
+
+          await item.save();
+
+          let total = item.price * duration;
+          let tax = total * 0.10
+
+          const invoice = Math.floor(1000000 + Math.random() * 9000000)
+
+          const member = await Member.create({
+            firstName,
+            lastName,
+            email: emailAddress,
+            phoneNumber
+          })
+
+          const newBooking = {
+            invoice,
+            startDate,
+            endDate,
+            total: total += tax,
+            itemId: {
+                _id: item.id,
+                title: item.title,
+                price: item.price,
+                duration: duration,
+            },
+            memberId: member.id,
+            payments: {
+                receipt: `images/${req.file.filename}`,
+                bankOrigin,
+                accountHolder,
+            }
+          }
+
+          const booking = await Booking.create(newBooking);
+
+          res.status(201).json({message: "Booking succeed", booking})
+          
     }
 }
