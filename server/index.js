@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -19,18 +20,19 @@ const adminRouter = require('./routes/admin')
 const apiRouter = require('./routes/api')
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(cors())
 app.use(methodOverride('_method'))
 const oneDay = 1000 * 60 * 60 * 24;
+app.set("trust proxy", 1);
 app.use(sessions({
   secret: 'zxcvbnm',
   resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: oneDay }
+  saveUninitialized: false,
+  name: 'TravejoyServer',
+  cookie: { maxAge: oneDay, sameSite: 'none', secure: false, httpOnly: false  }
 }))
 app.use(flash())
 app.use(logger('dev'));
