@@ -59,7 +59,7 @@ module.exports = {
                     cities: city.length,
                 },
                 mostPicked,
-                category,
+                categories: category,
                 testimonial
             })
         } catch (error) {
