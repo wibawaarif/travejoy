@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
-const session = require('express-session')
 const flash = require('connect-flash')
+const sessions = require('express-session')
 require('dotenv').config()
 
 
@@ -25,11 +25,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(methodOverride('_method'))
-app.use(session({
-  secret: 'keyboard cat',
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(sessions({
+  secret: 'zxcvbnm',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: oneDay }
 }))
 app.use(flash())
 app.use(logger('dev'));
