@@ -2,8 +2,7 @@
   "name": "server",
   "version": "0.0.0",
   "scripts": {
-    "start": "node index.js",
-    "main": "./index.js",
+    "start": "node server.js",
     "dev": "nodemon ./bin/www",
     "test": "mocha --exit"
   },
