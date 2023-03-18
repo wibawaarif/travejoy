@@ -26,13 +26,12 @@ app.set('view engine', 'ejs');
 app.use(cors())
 app.use(methodOverride('_method'))
 const oneDay = 1000 * 60 * 60 * 24;
-app.set("trust proxy", 1);
 app.use(sessions({
   secret: 'zxcvbnm',
   resave: false,
   saveUninitialized: false,
   name: 'TravejoyServer',
-  cookie: { maxAge: oneDay, sameSite: 'none', secure: false, httpOnly: false  }
+  cookie: { maxAge: oneDay }
 }))
 app.use(flash())
 app.use(logger('dev'));
