@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "node index.js",
-    "main": "node index.js",
+    "main": "./index.js",
     "dev": "nodemon ./bin/www",
     "test": "mocha --exit"
   },
