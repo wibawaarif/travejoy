@@ -79,3 +79,5 @@ connectDB().then(() => {
       console.log("listening for requests");
   })
 })
+
+module.exports = app;
