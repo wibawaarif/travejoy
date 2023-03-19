@@ -10,6 +10,8 @@ const flash = require('connect-flash')
 const sessions = require('express-session')
 require('dotenv').config()
 
+const port = 3000;
+
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -62,7 +64,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(process.env.PORT || 3000 , () => {
+app.listen(process.env.PORT || port , () => {
   console.log(`Example app listening on port 3000`)
 })
 
