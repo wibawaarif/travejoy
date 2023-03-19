@@ -24,15 +24,16 @@ const connectDB = async () => {
 }
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('../routes/index');
+var usersRouter = require('../routes/users');
 // router admin
-const adminRouter = require('./routes/admin')
-const apiRouter = require('./routes/api')
+const adminRouter = require('../routes/admin')
+const apiRouter = require('../routes/api')
 
 var app = express();
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+console.log(path.join(__dirname, '../views'))
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 app.use(cors())
 app.use(methodOverride('_method'))
@@ -73,11 +74,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//Connect to the database before listening
-connectDB().then(() => {
-  app.listen(process.env.PORT || port, () => {
-      console.log("listening for requests");
-  })
-})
 
-module.exports = app;
+module.exports = {
+    app,
+    connectDB,
+    port
+}
