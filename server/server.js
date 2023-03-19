@@ -13,7 +13,16 @@ require('dotenv').config()
 const port = 3000;
 
 
-mongoose.connect(process.env.MONGO_URI);
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -64,7 +73,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(process.env.PORT || port , () => {
-  console.log(`Example app listening on port 3000`)
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(process.env.PORT || port, () => {
+      console.log("listening for requests");
+  })
 })
-
