@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+
 
 import InputNumber from 'elements/Form/InputNumber/index'
 import InputDate from 'elements/Form/InputDate/index'
@@ -6,7 +8,7 @@ import Button from 'elements/Button'
 
 import propTypes from 'prop-types'
 
-export default class BookingForm extends Component {
+class BookingForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -137,3 +139,5 @@ BookingForm.propTypes = {
     itemDetails: propTypes.object,
     startBooking: propTypes.func,
 }
+
+export default withRouter(BookingForm)

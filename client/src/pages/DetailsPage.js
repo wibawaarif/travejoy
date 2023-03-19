@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Fade from "react-reveal/Fade";
+import { connect } from 'react-redux';
 import Header from "parts/Header"
 import PageDetailTitle from 'parts/PageDetailTitle'
 import FeaturedImage from 'parts/FeaturedImage'
@@ -12,7 +13,9 @@ import Footer from 'parts/Footer'
 
 import itemDetails from 'json/itemDetails.json'
 
-export default class DetailsPage extends Component {
+import { checkoutBooking } from 'store/actions/checkout';
+
+class DetailsPage extends Component {
 
     componentDidMount() {
         window.title = "Details Page";
@@ -53,3 +56,5 @@ export default class DetailsPage extends Component {
     )
   }
 }
+
+export default connect(null, { checkoutBooking })(DetailsPage);
