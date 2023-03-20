@@ -10,9 +10,6 @@ const flash = require('connect-flash')
 const sessions = require('express-session')
 require('dotenv').config()
 
-const port = 3000;
-
-
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);
@@ -73,11 +70,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//Connect to the database before listening
-connectDB().then(() => {
-  app.listen(process.env.PORT || port, () => {
-      console.log("listening for requests");
-  })
-})
 
-module.exports = app
+module.exports = {app, connectDB}

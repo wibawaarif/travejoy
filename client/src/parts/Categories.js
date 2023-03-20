@@ -4,19 +4,14 @@ import Fade from 'react-reveal/Fade'
 
 export default function Categories({ data }) {
   return data.map((category, index1) => {
+    if(category.itemId.length === 0) return null
     return (
       <section className="container pe-4 ps-4" key={`category-${index1}`}>
         <Fade bottom>
         <h3 className="mb-3 fw-medium">{category.name}</h3>
         <div className="container-grid">
-          {category.items.length === 0 ? (
-            <div className="row">
-              <div className="col-auto align-items-center">
-                There is no property at this category
-              </div>
-            </div>
-          ) : (
-            category.items.map((item, index2) => {
+          {
+            category.itemId.map((item, index2) => {
               return (
                 <div
                   className="item column-3 row-1"
@@ -31,8 +26,8 @@ export default function Categories({ data }) {
                     )}
                     <figure className="img-wrapper" style={{ height: 180 }}>
                       <img
-                        src={item.imageUrl}
-                        alt={item.name}
+                        src={item.imageId[0] ? `${process.env.REACT_APP_HOST}/${item.imageId[0].imageUrl}` : ""}
+                        alt={item.title}
                         className="img-cover"
                       />
                     </figure>
@@ -42,7 +37,7 @@ export default function Categories({ data }) {
                         href={`/properties/${item._id}`}
                         className="stretched-link d-block text-grey-800 text-decoration-none"
                       >
-                        <h5 className="text-secondary" style={{fontSize: 24, fontWeight: 400}}>{item.name}</h5>
+                        <h5 className="text-secondary" style={{fontSize: 24, fontWeight: 400}}>{item.title}</h5>
                       </Button>
                       <span className="text-dark fw-light fs-5">
                         {item.city}, {item.country}
@@ -53,7 +48,7 @@ export default function Categories({ data }) {
                 </div>
               );
             })
-          )}
+          }
         </div>
         </Fade>
       </section>
