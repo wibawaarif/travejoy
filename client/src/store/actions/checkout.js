@@ -9,7 +9,7 @@ export const checkoutBooking = (payload) => (dispatch) => {
 };
 
 export const submitBooking = (payload) => () => {
-  return axios.post(`/booking-page`, payload, {
+  return axios.post(`https://travejoyapps-3-n1195700.deta.app/api/v1/member/booking-page`, payload, {
     headers: { contentType: "multipart/form-data" },
   });
 };

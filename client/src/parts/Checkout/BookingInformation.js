@@ -6,6 +6,7 @@ import InputText from 'elements/Form/InputText';
 
 export default function BookingInformation(props) {
     const { data, ItemDetails, checkout } = props;
+    console.log(ItemDetails)
 
   return (
     <Fade>
@@ -17,14 +18,14 @@ export default function BookingInformation(props) {
                 <figure className="img-wrapper" style={{ height: 270 }}>
                   <img
                     className="img-cover"
-                    src={ItemDetails.imageUrls[0].url}
-                    alt={ItemDetails.name}
+                    src={`${process.env.REACT_APP_HOST}/${ItemDetails.imageId[0].imageUrl}`}
+                    alt={ItemDetails.title}
                   />
                 </figure>
                 <div style={{marginTop: '1rem'}} className="row align-items-center">
                   <div className="col">
                     <div className="meta-wrapper m-0">
-                      <h4 style={{fontWeight: 400, fontSize: 24}}>{ItemDetails.name}</h4>
+                      <h4 style={{fontWeight: 400, fontSize: 24}}>{ItemDetails.title}</h4>
                       <span style={{fontSize: 20}} className="text-dark fw-light">
                         {ItemDetails.city}, {ItemDetails.country}
                       </span>

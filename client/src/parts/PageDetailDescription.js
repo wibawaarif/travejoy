@@ -23,7 +23,7 @@ export default function PageDetailDescription({ data }) {
                     src={`${process.env.REACT_APP_HOST}/${feature.imageUrl}`}
                     alt={feature.name}
                   />{" "}
-                  <span>{feature.qty}</span>{" "}
+                  <span className="fw-medium">{feature.qty}</span>{" "}
                   <span style={{fontSize: 20}} className="text-dark fw-regular">
                     {feature.name}
                   </span>
