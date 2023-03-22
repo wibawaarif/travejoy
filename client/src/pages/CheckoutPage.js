@@ -44,7 +44,7 @@ class CheckoutPage extends Component {
 
   componentDidMount() {
     window.scroll(0, 0);
-    document.title = "Staycation | Checkout";
+    document.title = "Checkout | Travejoy";
   }
 
 
@@ -74,7 +74,7 @@ class CheckoutPage extends Component {
           </div>
         </div>
       </div>
-    );
+    )
 
     const steps = {
       bookingInformation: {
@@ -156,7 +156,7 @@ class CheckoutPage extends Component {
                     <span className='fs-5 fw-medium' style={{color: '#ACACAC'}}>Cancel</span>
                   </Button>
                 </Controller>
-              )};
+              )}
 
               {CurrentStep === "payment" && (
                 <Controller>
@@ -186,7 +186,7 @@ class CheckoutPage extends Component {
                     <span className='fs-5 fw-medium' style={{color: '#ACACAC'}}>Cancel</span>
                   </Button>
                 </Controller>
-              )};
+              )}
 
             {CurrentStep === "completed" && (
                 <Controller>
@@ -201,7 +201,7 @@ class CheckoutPage extends Component {
                     <span className="fs-5 fw-medium text-light">Back to Home</span>
                   </Button>
                 </Controller>
-              )};  
+              )};
             </>
           )
         }
