@@ -1,6 +1,10 @@
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const { getStorage, ref, getDownloadURL, uploadBytesResumable } = require('firebase/storage')
+const { signInWithEmailAndPassword, getAuth } = require("firebase/auth");
+const auth = require('../config/firebase.config')
+
 // import uuid from "uuid/v4";
 
 const storageMultiple = multer.diskStorage({
@@ -34,10 +38,25 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-  storage: storage,
+  storage: multer.memoryStorage(),
   limits: { fileSize: 1000000 },
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
+  fileFilter: async function (req, file, cb) {
+  checkFileType(file, cb);
+  const storageFB = getStorage();
+  try {
+    const { user } = await signInWithEmailAndPassword(getAuth(), process.env.FIREBASE_USER, process.env.FIREBASE_AUTH)
+    console.log('middleware', req.files)
+    const dateTime = Date.now();
+    const fileName = `images/${req.file.originalname + "      " + dateTime}`
+    const storageRef = ref(storageFB, fileName)
+    const metadata = {
+        contentType: req.file.mimetype,
+    }
+    await uploadBytesResumable(storageRef, req.file.buffer, metadata);
+    req.file.originalname = fileName
+  } catch (error) {
+    console.log(error)
+  }
   }
 }).single("image");
 

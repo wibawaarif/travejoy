@@ -127,6 +127,7 @@ module.exports = {
     },
     addBank: async(req, res) => {
         try{
+            console.log('middleware', req.files)
         const { bank, account, name } = req.body;
         await Bank.create({name, accountNumber: account, bankName: bank, imageUrl: `images/${req.file.filename}`});
 

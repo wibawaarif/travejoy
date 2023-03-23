@@ -110,6 +110,7 @@ module.exports = {
     },
 
     bookingPage: async (req, res) => {
+        console.log(req.downloadURL)
         const {
             idItem,
             duration,
@@ -189,5 +190,5 @@ module.exports = {
 
           res.status(201).json({message: "Booking succeed", booking})
           
-    }
+    },
 }
