@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const sessions = require('express-session');
 const MongoStore = require('connect-mongo');
-const helmet = require('helmet')
 require('dotenv').config()
 
 const connectDB = async () => {
