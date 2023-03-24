@@ -7,7 +7,7 @@ var logger = require('morgan');
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const flash = require('connect-flash')
-const sessions = require('express-session')
+const sessions = require('cookie-session')
 require('dotenv').config()
 
 const connectDB = async () => {

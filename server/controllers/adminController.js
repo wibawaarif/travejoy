@@ -112,7 +112,7 @@ module.exports = {
         }
     },
     actionLogout: (req,res) => {
-        req.session.destroy();
+        req.session = null;
         res.redirect('/admin/signin')
     },
     viewDashboard: async (req, res) => {
