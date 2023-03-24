@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 <img height="60%" width="100%" src="./progress-project.png" alt="Progress">
 
-Server deployed on : https://travejoyapps-3-n1195700.deta.app
+Server deployed on : https://travejoy.vercel.app/
 
 ## Available Scripts
 
