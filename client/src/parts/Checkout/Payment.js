@@ -67,12 +67,12 @@ export default function Payment(props) {
                 placeholder="Browse a file..."
               />
 
-              <label style={{fontSize: 22}} htmlFor="bankName">Asal Bank</label>
+              <label style={{fontSize: 22}} htmlFor="bankOrigin">Asal Bank</label>
               <InputText
-                id="bankName"
-                name="bankName"
+                id="bankOrigin"
+                name="bankOrigin"
                 type="text"
-                value={data.bankName}
+                value={data.bankOrigin}
                 onChange={props.onChange}
                 placeholder="Please type here..."
               />

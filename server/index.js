@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const sessions = require('express-session');
 const MongoStore = require('connect-mongo');
+const bodyParser = require('body-parser')
 require('dotenv').config()
 
 const connectDB = async () => {
@@ -31,11 +32,11 @@ const apiRouter = require('./routes/api')
 var app = express();
 
 // view engine setup
+app.use(bodyParser.json())
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(cors())
 app.use(methodOverride('_method'))
-const oneDay = 1000 * 60 * 60 * 24;
 app.use(sessions({
   secret: 'zxcvbnm',
   store: MongoStore.create({

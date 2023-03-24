@@ -26,7 +26,7 @@ class CheckoutPage extends Component {
       email: "",
       phone: "",
       proofPayment: "",
-      bankName: "",
+      bankOrigin: "",
       bankHolder: "",
       errorMsg: "",
     },
@@ -58,13 +58,12 @@ class CheckoutPage extends Component {
     payload.append("phoneNumber", data.phone);
     payload.append("idItem", checkout._id);
     payload.append("duration", checkout.duration);
-    payload.append("StartDate", checkout.date.startDate);
-    payload.append("EndDate", checkout.date.endDate);
+    payload.append("startDate", checkout.date.startDate);
+    payload.append("endDate", checkout.date.endDate);
     payload.append("accountHolder", data.bankHolder);
     payload.append("bankOrigin", data.bankOrigin);
     payload.append("image", data.proofPayment[0]);
-    payload.append("bankId", checkout.bankId);
-
+    console.log(payload)
     this.props.submitBooking(payload).then(() => {
       nextStep();
     });

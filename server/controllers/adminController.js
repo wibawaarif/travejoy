@@ -430,6 +430,11 @@ module.exports = {
             for(let i=0; i < item.imageId.length; i++) {
                 Image.findOne({_id: item.imageId[i]._id}).then((image) => {
                     fs.unlink(path.join(`public/${image.imageUrl}`));
+                    deleteImage(image.imageUrl).then(res => {
+                        console.log(res)
+                    }).catch(err => {
+                        console.log(err)
+                    })
                     image.remove();
                 }).catch((error) => {
                     req.flash('alertMessage', `${error.message}`)

@@ -11,6 +11,7 @@
 # production
 /build
 /public/images
+package-lock.json
 
 # misc
 .env
