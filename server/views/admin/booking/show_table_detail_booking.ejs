@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-4">
                 <img
-                src="https://travejoyapp-5-u0845836.deta.app/<%= booking.payments.receipt %>"
+                src="<%= process.env.IMAGE_HOST %>/<%= booking.payments.receipt.slice(0, 6) %>%2F<%= booking.payments.receipt.slice(7) %>?alt=media&token=<%= process.env.ACCESS_TOKEN %>"
                 alt="image"
                 style="width: 100%; display: block"
               />

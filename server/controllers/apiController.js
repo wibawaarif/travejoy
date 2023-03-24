@@ -6,6 +6,27 @@ const Bank = require('../models/Bank')
 const Member = require('../models/Member')
 const Booking = require('../models/Booking')
 
+const { getStorage, ref, getDownloadURL, deleteObject ,uploadBytesResumable } = require('firebase/storage')
+const { signInWithEmailAndPassword, getAuth } = require("firebase/auth");
+const { auth } = require('../config/firebase.config')
+
+async function uploadImage(file, quantity) {
+    const storageFB = getStorage();
+
+    await signInWithEmailAndPassword(auth, process.env.FIREBASE_USER, process.env.FIREBASE_AUTH)
+
+    if (quantity === 'single') {
+        const dateTime = Date.now();
+        const fileName = `images/${dateTime}`
+        const storageRef = ref(storageFB, fileName)
+        const metadata = {
+            contentType: file.type,
+        }
+        await uploadBytesResumable(storageRef, file.buffer, metadata);
+        return fileName
+    }
+}
+
 module.exports = {
     landingPage: async(req, res) => {
         try {
@@ -164,7 +185,12 @@ module.exports = {
             email: emailAddress,
             phoneNumber
           })
+          const image = {
+            type: req.file.mimetype,
+            buffer: req.file.buffer
+          }
 
+          const createImage = await uploadImage(image, 'single')
           const newBooking = {
             invoice,
             startDate,
@@ -178,7 +204,7 @@ module.exports = {
             },
             memberId: member.id,
             payments: {
-                receipt: `images/${req.file.filename}`,
+                receipt: createImage,
                 bankOrigin,
                 accountHolder,
             }
