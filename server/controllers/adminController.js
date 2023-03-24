@@ -8,10 +8,63 @@ const User = require('../models/User')
 const Booking = require('../models/Booking')
 const Member = require('../models/Member')
 
+const { getStorage, ref, getDownloadURL, deleteObject ,uploadBytesResumable } = require('firebase/storage')
+const { signInWithEmailAndPassword, getAuth } = require("firebase/auth");
+const { auth } = require('../config/firebase.config')
 
 const bcrypt = require('bcryptjs')
 const fs = require('fs-extra')
 const path = require('path')
+
+async function uploadImage(file, quantity) {
+    const storageFB = getStorage();
+
+    await signInWithEmailAndPassword(auth, process.env.FIREBASE_USER, process.env.FIREBASE_AUTH)
+
+    if (quantity === 'single') {
+        const dateTime = Date.now();
+        const fileName = `images/${dateTime}`
+        const storageRef = ref(storageFB, fileName)
+        const metadata = {
+            contentType: file.type,
+        }
+        await uploadBytesResumable(storageRef, file.buffer, metadata);
+        return fileName
+    }
+
+    if (quantity === 'multiple') {
+        for(let i=0; i < file.images.length; i++) {
+            const dateTime = Date.now();
+            const fileName = `images/${dateTime}`
+            const storageRef = ref(storageFB, fileName)
+            const metadata = {
+                contentType: file.images[i].mimetype,
+            }
+
+            const saveImage = await Image.create({imageUrl: fileName});
+            file.item.imageId.push({_id: saveImage._id});
+            await file.item.save();
+
+            await uploadBytesResumable(storageRef, file.images[i].buffer, metadata);
+
+        }
+        return
+    }
+
+}
+
+async function deleteImage(image) {
+    try {
+        const storage = getStorage();
+        await signInWithEmailAndPassword(auth, process.env.FIREBASE_USER, process.env.FIREBASE_AUTH)
+        const desertRef = ref(storage, image)
+        await deleteObject(desertRef);
+    } catch (error) {
+        console.log(error)
+    }
+
+
+}
 
 module.exports = {
     viewSignin: async (req, res) => {
@@ -127,9 +180,14 @@ module.exports = {
     },
     addBank: async(req, res) => {
         try{
-            console.log('middleware', req.files)
         const { bank, account, name } = req.body;
-        await Bank.create({name, accountNumber: account, bankName: bank, imageUrl: `images/${req.file.filename}`});
+        const file = {
+            type: req.file.mimetype,
+            buffer: req.file.buffer
+        }
+        const buildImage = await uploadImage(file, 'single'); 
+
+        await Bank.create({name, accountNumber: account, bankName: bank, imageUrl: buildImage});
 
             req.flash('alertMessage', 'Success Add Bank')
             req.flash('alertStatus', 'success')
@@ -206,7 +264,8 @@ module.exports = {
         try {
             const { id } = req.params;
             const bank = await Bank.findById(id)
-            await fs.unlink(path.join(`public/${bank.imageUrl}`))
+            if (!bank) return res.status(400).send({message: 'Bank ID Not Found'})
+            await deleteImage(bank.imageUrl)
             bank.deleteOne({_id: id})
             req.flash('alertMessage', 'Success Delete Bank')
             req.flash('alertStatus', 'success')
@@ -257,12 +316,12 @@ module.exports = {
             const item = await Item.create(newItem)
             category.itemId.push({_id: item._id})
             await category.save()
-            console.log(req.files)
-            for(let i=0; i < req.files.length; i++) {
-                const saveImage = await Image.create({imageUrl: `images/${req.files[i].filename}`});
-                item.imageId.push({_id: saveImage._id});
-                await item.save();
+            const files = {
+                item,
+                images: req.files
             }
+            await uploadImage(files ,'multiple')
+
             req.flash('alertMessage', 'Success Add item')
             req.flash('alertStatus', 'success')
             res.redirect('/admin/item')
@@ -286,7 +345,8 @@ module.exports = {
                 title: "Travejoy | Show Image Item",
                 alert,
                 item,
-                action: 'show image'
+                action: 'show image',
+                user: req.session.user
             });
             
         } catch (error) {
@@ -434,7 +494,6 @@ module.exports = {
     },
     editFeature: async(req, res) => {
         const { id, name, quantity, itemId } = req.body;
-        console.log(req.body)
 
         try {
             const feature = await Feature.findById(id)
