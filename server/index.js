@@ -7,7 +7,8 @@ var logger = require('morgan');
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const flash = require('connect-flash')
-const sessions = require('cookie-session')
+const sessions = require('express-session')
+const MongoStore = require('connect-mongo')
 require('dotenv').config()
 
 const connectDB = async () => {
@@ -36,10 +37,13 @@ app.use(methodOverride('_method'))
 const oneDay = 1000 * 60 * 60 * 24;
 app.use(sessions({
   secret: 'zxcvbnm',
-  resave: false,
-  saveUninitialized: false,
-  name: 'TravejoyServer',
-  cookie: { maxAge: oneDay }
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    autoRemove: 'interval',
+    autoRemoveInterval: 30,
+  }),
+  resave:false,
+  saveUninitialized:false,
 }))
 app.use(flash())
 app.use(logger('dev'));
