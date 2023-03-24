@@ -4,11 +4,12 @@ var cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const methodOverride = require('method-override')
-const mongoose = require('mongoose')
-const flash = require('connect-flash')
-const sessions = require('express-session')
-const MongoStore = require('connect-mongo')
+const methodOverride = require('method-override');
+const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const sessions = require('express-session');
+const MongoStore = require('connect-mongo');
+const helmet = require('helmet')
 require('dotenv').config()
 
 const connectDB = async () => {
@@ -29,7 +30,14 @@ const adminRouter = require('./routes/admin')
 const apiRouter = require('./routes/api')
 
 var app = express();
+
 // view engine setup
+app.use(helmet.noSniff());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.frameguard());
+app.use(helmet.xssFilter());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(cors())
