@@ -36,8 +36,6 @@ app.use(helmet.noSniff());
 app.use(helmet.hidePoweredBy());
 app.use(helmet.frameguard());
 app.use(helmet.xssFilter());
-app.use(helmet.permittedCrossDomainPolicies());
-app.use(helmet.referrerPolicy());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(cors())
