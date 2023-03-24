@@ -75,4 +75,10 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = {app, connectDB}
+connectDB();
+
+app.listen(process.env.PORT || 3000, (test) => {
+  console.log('Server running on port 3000')
+})
+
+module.exports = app;
