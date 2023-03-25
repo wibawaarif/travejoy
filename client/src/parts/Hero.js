@@ -89,7 +89,7 @@ export default function Hero(props) {
         </div>
         </Fade>
         <div className="col-auto ps-5">
-          <div className="d-flex justify-content-end align-items-center" style={{width: 600, height: 600 }}>
+          <div className="d-flex justify-content-end align-items-center hero-image-placeholder">
           <Fade bottom delay={200}>
             <img
               src={ImageHero}

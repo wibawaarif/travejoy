@@ -82,7 +82,7 @@ class BookingForm extends Component {
     const { data } = this.state
     const { itemDetails } = this.props
     return (
-      <div className='card bordered bg-light' style={{padding: '60px 80px'}}>
+      <div className='card bordered bg-light card-booking'>
                 <h4 className="mb-3">Start Booking</h4>
         <h5 className="h2 text-green mb-4">
           ${itemDetails.price}{" "}

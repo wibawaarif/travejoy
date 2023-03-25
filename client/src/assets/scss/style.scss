@@ -55,7 +55,68 @@
 @import "utilities/api";
 // scss-docs-end import-stack
 
+@media (min-width:320px) and (max-width:769px)  { 
+    .hero-image-placeholder {
+        height: 400px !important;
+        justify-content: flex-start !important;
+    }
+    .hero-image-placeholder img {
+        width: 330px !important;
+        height: 330px !important;
+    }
+    .testimonial-hero img {
+        width: 330px !important;
+        height: 450px !important;
+    }
 
+    .testimonial-primary {
+        width: 100%;
+    }
+
+    .btn-testimonial {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container-grid {
+        .item.column-4, .item.column-3, .item.column-7, .item.column-5 {
+            grid-column-end: span 12;
+        }
+    }
+
+    .brand-tagline, .brand-text-icon {
+        padding-left: 0 !important;
+    }
+    .footer-2 {
+        margin-left: 0 !important;
+        width: 500px !important;
+    }
+
+    .category-0 {
+        margin-top: 52rem;
+    }
+
+    .card-booking {
+        padding: 32px 32px !important;
+    }
+
+    .card-booking-input {
+        padding: 25px 25px 0 25px !important;
+    }
+
+    .button-checkout {
+        font-size: small !important;
+    }
+ }
+
+.card-booking {
+    padding: 60px 80px
+}
+
+.hero-image-placeholder {
+    width: 600px;
+    height: 600px;
+}
 
 body {
     font-family: "Jost", sans-serif;

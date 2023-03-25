@@ -8,13 +8,13 @@ export default function Footer() {
     <footer>
         <div className="container">
             <div className="row">
-                <div className="col-auto" style={{width: 300}}>
+                <div className="col-12 col-lg-auto footer-2" style={{width: 300}}>
                     <IconText />
                     <p className="brand-tagline" style={{paddingLeft: 12}}>
                     We kaboom your beauty holiday instantly and memorable
                     </p>
                 </div>
-                <div className="col-2" style={{marginLeft: 100, marginRight: 80}}>
+                <div className="col-12 col-lg-2 footer-2" style={{marginLeft: 100, marginRight: 80}}>
                     <h6 className="mt-2">
                         For Beginners
                     </h6>
@@ -30,7 +30,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="col-2" style={{marginRight: 70}}>
+                <div className="col-12 col-lg-2" style={{marginRight: 70}}>
                     <h6 className="mt-2">
                         Explore Us
                     </h6>
@@ -46,7 +46,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="col-2">
+                <div className="col-12 col-lg-2">
                     <h6 className="mt-2">
                         Connect Us
                     </h6>

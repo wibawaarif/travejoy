@@ -6,8 +6,8 @@ const Bank = require('../models/Bank')
 const Member = require('../models/Member')
 const Booking = require('../models/Booking')
 
-const { getStorage, ref, getDownloadURL, deleteObject ,uploadBytesResumable } = require('firebase/storage')
-const { signInWithEmailAndPassword, getAuth } = require("firebase/auth");
+const { getStorage, ref ,uploadBytesResumable } = require('firebase/storage')
+const { signInWithEmailAndPassword } = require("firebase/auth");
 const { auth } = require('../config/firebase.config')
 
 async function uploadImage(file, quantity) {

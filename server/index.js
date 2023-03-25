@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const sessions = require('express-session');
 const MongoStore = require('connect-mongo');
 const bodyParser = require('body-parser')
+const helmet = require('helmet')
 require('dotenv').config()
 
 const connectDB = async () => {
@@ -30,7 +31,11 @@ const adminRouter = require('./routes/admin')
 const apiRouter = require('./routes/api')
 
 var app = express();
-
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts());
+app.use(helmet.xssFilter());
 // view engine setup
 app.use(bodyParser.json())
 app.set('views', path.join(__dirname, 'views'));

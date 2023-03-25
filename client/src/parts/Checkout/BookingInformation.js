@@ -6,13 +6,11 @@ import InputText from 'elements/Form/InputText';
 
 export default function BookingInformation(props) {
     const { data, ItemDetails, checkout } = props;
-    console.log(ItemDetails)
-
   return (
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
         <div className="row justify-content-center align-items-center">
-          <div className="col-5 py-5" style={{ paddingRight: 80, borderRight: '1px solid #BCC3D1', borderRadius: 1 }}>
+          <div className="col-12 col-lg-5 border-end border-secondary py-lg-5 card-booking-input" style={{ paddingRight: 80, borderRadius: 1 }}>
             <Fade delay={300}>
               <div className="card bg-light">
                 <figure className="img-wrapper" style={{ height: 270 }}>
@@ -31,7 +29,7 @@ export default function BookingInformation(props) {
                       </span>
                     </div>
                   </div>
-                  <div className="col-auto">
+                  <div className="col-6 col-lg-auto">
                     <span style={{fontWeight: 500, fontSize: 22}} className='text-secondary'>
                       ${+checkout.duration * ItemDetails.price} USD
                       <span style={{fontWeight: 300}} className="text-dark"> per </span>
@@ -43,7 +41,7 @@ export default function BookingInformation(props) {
               </div>
             </Fade>
           </div>
-          <div className="col-5 py-5" style={{ paddingLeft: 80 }}>
+          <div className="col-12 col-lg-5 py-lg-5 card-booking-input" style={{ paddingLeft: 80 }}>
             <Fade delay={600}>
               <label style={{fontSize: 22}} htmlFor="firstName">First Name</label>
               <InputText

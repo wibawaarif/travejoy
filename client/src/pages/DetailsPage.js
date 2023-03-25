@@ -23,7 +23,7 @@ class DetailsPage extends Component {
         window.scrollTo(0, 0);
 
         if(!this.props.page[this.props.match.params.id]) {
-          this.props.fetchPage(`${process.env.REACT_APP_HOST}/api/v1/member/detail-page/${this.props.match.params.id}`, this.props.match.params.id)
+          this.props.fetchPage(`/detail-page/${this.props.match.params.id}`, this.props.match.params.id)
       }   
     }
   render() {
@@ -43,12 +43,12 @@ class DetailsPage extends Component {
       <FeaturedImage data={page[match.params.id].imageId} />
       <section className='container'>
         <div className='row'>
-          <div className='col-7 pe-5'>
+          <div className='col-12 col-lg-7 pe-5'>
             <Fade bottom>
             <PageDetailDescription data={page[match.params.id]} />
             </Fade>
           </div>
-          <div className='col-5'>
+          <div className='col-12 col-lg-5'>
           <Fade bottom>
             <BookingForm startBooking={this.props.checkoutBooking} itemDetails={page[match.params.id]} />
             </Fade>

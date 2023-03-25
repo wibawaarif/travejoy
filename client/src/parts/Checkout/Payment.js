@@ -22,7 +22,7 @@ export default function Payment(props) {
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
         <div className="row justify-content-center align-items-center">
-          <div className="col-5 py-5" style={{ paddingRight: 80, borderRight: '1px solid #BCC3D1', borderRadius: 1 }}>
+          <div className="col-12 col-lg-5 border-end border-secondary py-lg-5 card-booking-input" style={{ paddingRight: 80, borderRadius: 1 }}>
             <Fade delay={300}>
               <p style={{fontSize: 22}} className="mb-4">Transfer Pembayaran:</p>
               <p style={{fontSize: 22}}>Tax: <span style={{fontSize: 22, fontWeight: 500}}>{tax}%</span></p>
@@ -55,7 +55,7 @@ export default function Payment(props) {
               </div>
             </Fade>
           </div>
-          <div className="col-5 py-5" style={{ paddingLeft: 80 }}>
+          <div className="col-12 col-lg-5 py-lg-5 card-booking-input" style={{ paddingLeft: 80 }}>
             <Fade delay={600}>
               <label style={{fontSize: 22}} htmlFor="proofPayment">Upload Bukti Transfer</label>
               <InputFile

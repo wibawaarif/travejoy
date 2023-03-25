@@ -8,8 +8,8 @@ const User = require('../models/User')
 const Booking = require('../models/Booking')
 const Member = require('../models/Member')
 
-const { getStorage, ref, getDownloadURL, deleteObject ,uploadBytesResumable } = require('firebase/storage')
-const { signInWithEmailAndPassword, getAuth } = require("firebase/auth");
+const { getStorage, ref, deleteObject ,uploadBytesResumable } = require('firebase/storage')
+const { signInWithEmailAndPassword, } = require("firebase/auth");
 const { auth } = require('../config/firebase.config')
 
 const bcrypt = require('bcryptjs')

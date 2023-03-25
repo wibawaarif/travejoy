@@ -66,7 +66,7 @@ class CheckoutPage extends Component {
     console.log(payload)
     this.props.submitBooking(payload).then(() => {
       nextStep();
-    });
+    })
   };
 
   render() {
@@ -163,7 +163,7 @@ class CheckoutPage extends Component {
                           hasShadow
                           onClick={nextStep}
                         >
-                          <span className="fs-5 fw-medium text-light">Continue to Book</span>
+                          <span className="fs-5 fw-medium text-light button-checkout">Continue to Book</span>
                         </Button>
                       </Fade>
                     )}
@@ -174,7 +174,7 @@ class CheckoutPage extends Component {
                     isLight
                     href={`/properties/${checkout._id}`}
                   >
-                    <span className='fs-5 fw-medium' style={{color: '#ACACAC'}}>Cancel</span>
+                    <span className='fs-5 fw-medium button-checkout' style={{color: '#ACACAC'}}>Cancel</span>
                   </Button>
                 </Controller>
               )}
@@ -193,7 +193,7 @@ class CheckoutPage extends Component {
                           hasShadow
                           onClick={() => this._Submit(nextStep)}
                         >
-                          <span className="fs-5 fw-medium text-light">Continue to Book</span>
+                          <span className="fs-5 fw-medium text-light button-checkout">Continue to Book</span>
                         </Button>
                       </Fade>
                     )}
@@ -204,7 +204,7 @@ class CheckoutPage extends Component {
                     isLight
                     onClick={prevStep}
                   >
-                    <span className='fs-5 fw-medium' style={{color: '#ACACAC'}}>Cancel</span>
+                    <span className='fs-5 fw-medium button-checkout' style={{color: '#ACACAC'}}>Cancel</span>
                   </Button>
                 </Controller>
               )}
@@ -219,7 +219,7 @@ class CheckoutPage extends Component {
                     hasShadow
                     href=""
                   >
-                    <span className="fs-5 fw-medium text-light">Back to Home</span>
+                    <span className="fs-5 fw-medium text-light button-checkout">Back to Home</span>
                   </Button>
                 </Controller>
               )};

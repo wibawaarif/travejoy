@@ -14,7 +14,7 @@ export default function PageDetailDescription({ data }) {
               return (
                 <div
                   key={`feature-${index}`}
-                  className="col-3"
+                  className="col-4 col-lg-3"
                   style={{ marginBottom: 20 }}
                 >
                   <img

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Fade from "react-reveal/Fade";
 
 import Button from "elements/Button/index";
 import BrandIcon from "parts/IconText";
 export default function Header(props) {
+  const [isActive, setActive] = useState(false)
   const getNavLinkClass = (path) => {
     return props.location.pathname === path ? " active" : "";
   };
@@ -28,15 +29,20 @@ export default function Header(props) {
       </Fade>
     );
 
+  const stylingUI = isActive ? {position: "absolute", left: -16, right: -16, paddingLeft: '2px'} : {}
+
   return (
     <Fade>
-      <header className="spacing-sm">
+      <header className="spacing-sm" style={{zIndex: 10}}>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light">
             <BrandIcon />
+            <button class="navbar-toggler" type="button" onClick={() => setActive(prev => !prev)}>
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <div className="collapse navbar-collapse">
-              <ul className="navbar-nav ms-auto">
+            <div className={['collapse navbar-collapse', isActive ? "show" : ""].join(" ")}>
+              <ul className="navbar-nav ms-auto bg-light" style={stylingUI}>
                 <li className={`nav-item${getNavLinkClass("/")}`}>
                   <Button className="nav-link" type="link" href="/">
                     Home
