@@ -63,7 +63,6 @@ class CheckoutPage extends Component {
     payload.append("accountHolder", data.bankHolder);
     payload.append("bankOrigin", data.bankOrigin);
     payload.append("image", data.proofPayment[0]);
-    console.log(payload)
     this.props.submitBooking(payload).then(() => {
       nextStep();
     })
