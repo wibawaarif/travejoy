@@ -1179,7 +1179,7 @@ $dropdown-bg:                       var(--#{$prefix}body-bg) !default;
 $dropdown-border-color:             var(--#{$prefix}border-color-translucent) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             var(--#{$prefix}border-width) !default;
-$dropdown-inner-border-radius:      calc($dropdown-border-radius - $dropdown-border-width) !default; // stylelint-disable-line function-disallowed-list
+$dropdown-inner-border-radius:      calc(#{$dropdown-border-radius} - $dropdown-border-width) !default; // stylelint-disable-line function-disallowed-list
 $dropdown-divider-bg:               $dropdown-border-color !default;
 $dropdown-divider-margin-y:         $spacer * .5 !default;
 $dropdown-box-shadow:               $box-shadow !default;
@@ -1370,7 +1370,7 @@ $popover-max-width:                 276px !default;
 $popover-border-width:              var(--#{$prefix}border-width) !default;
 $popover-border-color:              var(--#{$prefix}border-color-translucent) !default;
 $popover-border-radius:             var(--#{$prefix}border-radius-lg) !default;
-$popover-inner-border-radius:       calc($popover-border-radius - $popover-border-width) !default; // stylelint-disable-line function-disallowed-list
+$popover-inner-border-radius:       calc(#{$popover-border-radius} - #{$popover-border-width}) !default; // stylelint-disable-line function-disallowed-list
 $popover-box-shadow:                $box-shadow !default;
 
 $popover-header-font-size:          $font-size-base !default;
