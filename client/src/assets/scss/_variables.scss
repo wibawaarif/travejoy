@@ -868,7 +868,7 @@ $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
 $input-placeholder-color:               var(--#{$prefix}secondary-color) !default;
 $input-plaintext-color:                 var(--#{$prefix}body-color) !default;
 
-$input-height-border:                   calc($input-border-width * 2) !default; // stylelint-disable-line function-disallowed-list
+$input-height-border:                   calc(#{$input-border-width} * 2) !default; // stylelint-disable-line function-disallowed-list
 
 $input-height-inner:                    add($input-line-height * 1em, $input-padding-y * 2) !default;
 $input-height-inner-half:               add($input-line-height * .5em, $input-padding-y) !default;
